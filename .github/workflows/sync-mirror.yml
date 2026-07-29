@@ -27,5 +27,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           echo "davionlabs.sxxw.site" > CNAME
           git add CNAME
+          # 镜像仓库没有同步所需的 secret,workflow 同步过去只会产生失败运行,剔除
+          git rm -rq .github
           git commit -m "chore: 镜像站点绑定 davionlabs.sxxw.site"
           git push --force git@github.com:davionlabs-devops/cloudfront.git HEAD:main
